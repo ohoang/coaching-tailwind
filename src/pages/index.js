@@ -1,5 +1,6 @@
 import React from "react";
 import { Hero } from "../components/hero";
+import { Features } from "../components/features";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -13,6 +14,7 @@ function IndexPage() {
           title="Home"
         />
         <Hero />
+        <Features />
       </Layout>
     </>
   );
