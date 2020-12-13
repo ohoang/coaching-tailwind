@@ -5,7 +5,7 @@ export const Form = () => {
   return (
     <div className='p-10 bg-white w-full'>
       <h1 className='text-xl font-semibold'>Join the Learn Approach Waitlist 👋, <span className='font-normal'>please fill in your information below.</span></h1>
-      <form className='mt-6'>
+      <form className='mt-6' method="post" netlify-honeypot="bot-field" data-netlify="true" name="contact">
 
         <div className="mb-2">
           <fieldset className="flex border-0">
