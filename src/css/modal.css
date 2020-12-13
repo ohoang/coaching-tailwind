@@ -1,0 +1,68 @@
+
+.modal {
+  position: absolute;
+  top: 25%;
+  left: 24px;
+  right: 24px;
+  max-height: 65%;
+  /* bottom: 24px; */
+  /* position: relative;
+  top: 50%;*/
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  /* animation-name: modalSlide;
+  animation-duration: .3s;
+  transform: translateY(-50%); */
+  overflow-y: auto;
+}
+
+.modal-guts {
+  height: 100%;
+}
+
+.modal-guts > * {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.close-button {
+  position: absolute;
+
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+
+  top: 16px;
+  right: 16px;
+  /* needs to look OK with or without scrollbar */
+  background: black;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  padding: 5px 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  background: rgba(0,0,0,.65)
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
