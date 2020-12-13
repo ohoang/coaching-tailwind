@@ -1,4 +1,5 @@
 import React from 'react';
+import DatePicker from './datePicker';
 
 export const Form = () => {
   return (
@@ -25,6 +26,8 @@ export const Form = () => {
             </label>
           </fieldset>
         </div>
+
+        <DatePicker/>
 
         <div className='flex justify-between gap-3'>
           <span className='w-1/2'>
