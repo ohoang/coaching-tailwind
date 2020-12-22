@@ -5,8 +5,8 @@ import moment from 'moment';
 
 function encode(data) {
   const encoded = Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&")
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&")
   console.log({encoded});
   return encoded;
 }
@@ -15,44 +15,17 @@ export const Form = ({ course }) => {
   const [formValues, setFormValues] = React.useState({ course });
   const [startDate, setStartDate] = React.useState(moment().add(1, 'weeks').isoWeekday(6));
   const [endDate, setEndDate] = React.useState('');
-  const contactRef = React.useRef();
-  // const encode = (data) => {
-  //   return Object.keys(data)
-  //     .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-  //     .join("&");
-  // }
-  // console.log('encode', encode)
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   console.log('form', form.getAttribute('name'));
-  //   console.log('formValues', formValues);
-  //   fetch('/', {
-  //     method: 'POST',
-  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  //     body: encode({
-  //       'contact': form.getAttribute('name'),
-  //       ...formValues
-  //     })
-  //   })
-  //     .then(() => console.log('success'))
-  //     .catch(error => alert(error));
-  // };
-
 
   const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...formValues
-      })
+      body: encode({ "form-name": "contact", ...formValues })
     })
-      .then(() => console.log('thank you'))
+      .then(() => alert("Success!"))
       .catch(error => alert(error));
+
+    e.preventDefault();
   };
 
   const handleDatesChange = (dates) => {
@@ -86,22 +59,8 @@ export const Form = ({ course }) => {
     <div className='p-10 bg-white w-full'>
       <h1 className='text-xl font-semibold'>Join the Learn Approach Waitlist 👋, <span className='font-normal'>please fill in your information below.</span></h1>
 
-      <form
-        ref={contactRef}
-        name="contact"
-        method="post"
-        action="/thanks/"
-        data-netlify="true"
-        data-netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}>
-      {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-      <input type="hidden" name="form-name" value="contact" />
-      <p hidden>
-        <label>
-          Don’t fill this out:{" "}
-          <input name="bot-field" onChange={handleChange} />
-        </label>
-      </p>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
+      <input type="hidden" name="form-name" value="contact">
         <div className='mb-2'>
           <fieldset className='flex border-0'>
             <legend className='block text-xs font-semibold text-gray-600 uppercase mb-2'>
