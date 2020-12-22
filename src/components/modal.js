@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { Form } from './form';
 
 
 import '../css/modal.css';
 
-export const ReactModal = ({ darkMode = false }) => {
+export const ReactModal = ({ course, darkMode = false }) => {
   const [modalIsOpen,setIsOpen] = React.useState(false);
 
   const openModal = () => {
@@ -57,8 +58,13 @@ export const ReactModal = ({ darkMode = false }) => {
         contentLabel='Example Modal'
       >
         <button onClick={closeModal} className='float-right	p4 mt-2 mr-4 font-bold text-lg'>x</button>
-        <Form/>
+        <Form course={course}/>
       </Modal>
     </div>
   );
+}
+
+ReactModal.propTypes = {
+  course: PropTypes.string,
+  darkMode: PropTypes.bool
 }

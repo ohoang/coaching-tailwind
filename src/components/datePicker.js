@@ -1,21 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { START_DATE } from 'react-dates/constants';
 import moment from 'moment';
 import { DayPickerRangeController } from 'react-dates';
 
-const DatePicker = () => {
+const DatePicker = ({ handleDatesChange, startDate, endDate }) => {
   const [focus, setFocus] = React.useState(START_DATE);
-  const [startDate, setStartDate] = React.useState(moment());
-  const [endDate, setEndDate] = React.useState('');
-
-  // const handleFocusChange = focusedInput => setFocus(focusedInput);
-  const handleDatesChange = (dates) => {
-    console.log(dates)
-    setStartDate(dates.startDate);
-    setEndDate(dates.endDate)
-  }
 
   const isDayBlocked = (day) => {
 
@@ -27,7 +19,6 @@ const DatePicker = () => {
   }
 
   return (
-    <div className='my-10'>
     <DayPickerRangeController
       startDate={startDate}
       endDate={endDate}
@@ -39,9 +30,13 @@ const DatePicker = () => {
         setFocus(!f ? START_DATE : f);
       }}
     />
-    </div>
   )
 }
 
-export default DatePicker
+DatePicker.propTypes = {
+  handleDatesChange: PropTypes.func,
+  startDate: PropTypes.string,
+  endDate: PropTypes.string
+}
 
+export default DatePicker

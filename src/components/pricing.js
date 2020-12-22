@@ -53,7 +53,7 @@ export const Pricing = () => (
             <li>6hrs+ of infield Daygame</li>
             <li>Post-training advice, follow-up, and support</li>
           </ul>
-          <ReactModal/>
+          <ReactModal course='bootcamp'/>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ export const Pricing = () => (
             <li>Plenty of infield Daygame</li>
             <li>Hold you accountable (weekly)</li>
           </ul>
-          <ReactModal/>
+          <ReactModal course='6week'/>
         </div>
       </div>
     </div>
